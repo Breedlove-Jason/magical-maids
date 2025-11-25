@@ -1,6 +1,6 @@
 import Service from "../models/Service.js";
 
 export async function getServices(req, res) {
-  const services = await Service.find().sort({ popular: -1, basePrice: 1 });
+  const services = await Service.find().sort({ popular: -1, basePrice: 1 }).lean();
   res.json(services);
 }

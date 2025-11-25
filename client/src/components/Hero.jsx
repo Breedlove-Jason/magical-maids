@@ -37,6 +37,11 @@ export default function Hero() {
             className="rounded-3xl shadow-soft w-full h-[420px] object-cover"
             src="https://images.unsplash.com/photo-1600585152915-d208bec867a1?q=80&w=1400"
             alt="Clean home"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+            width="1400"
+            height="420"
           />
           <div className="absolute -bottom-5 -left-5 bg-white rounded-2xl p-4 shadow-soft border">
             <p className="text-sm font-semibold text-slate-900">

@@ -1,7 +1,13 @@
 export default function ServiceCard({ service }) {
   return (
     <div className="group rounded-3xl bg-white shadow-soft hover:shadow-lg transition overflow-hidden border">
-      <img className="h-44 w-full object-cover" src={service.imageUrl} alt={service.name} />
+      <img
+        className="h-44 w-full object-cover"
+        src={service.imageUrl}
+        alt={service.name}
+        loading="lazy"
+        decoding="async"
+      />
       <div className="p-5">
         {service.popular && (
           <span className="text-xs font-bold text-white bg-mm-purple px-2 py-1 rounded-full">

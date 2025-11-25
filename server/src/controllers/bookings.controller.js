@@ -35,6 +35,6 @@ export async function createBooking(req, res) {
 }
 
 export async function getBookings(req, res) {
-  const bookings = await Booking.find().populate("serviceId").sort({ createdAt: -1 });
+  const bookings = await Booking.find().populate("serviceId").sort({ createdAt: -1 }).lean();
   res.json(bookings);
 }
