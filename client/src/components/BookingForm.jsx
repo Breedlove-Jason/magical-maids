@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
-import { services } from "../data.js";
+import { createBooking } from "../api.js";
 
-export default function BookingForm() {
+export default function BookingForm({services}) {
   const [form, setForm] = useState({
     customerName: "",
     email: "",
@@ -28,19 +28,44 @@ export default function BookingForm() {
   const onChange = (e) =>
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   
-  function onSubmit(e) {
+  async function onSubmit(e) {
     e.preventDefault();
-    setStatus("done");
+    setStatus("loading");
+    try {
+      await createBooking({
+        ...form,
+        bedrooms: Number(form.bedrooms),
+        bathrooms: Number(form.bathrooms)
+      });
+      setStatus("done");
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 2000);
+    }
   }
-  
+
   if (status === "done") {
     return (
-      <div className="rounded-3xl bg-emerald-50 border border-emerald-200 p-6 text-center shadow-soft">
-        <h3 className="text-xl font-extrabold text-emerald-900 font-poppins">
-          You’re booked! ✨
+      <div className="rounded-3xl bg-emerald-50 border border-emerald-200 p-6 text-center shadow-soft dark:bg-emerald-950 dark:border-emerald-800">
+        <h3 className="text-xl font-extrabold text-emerald-900 font-poppins dark:text-emerald-100">
+          You're booked! ✨
         </h3>
-        <p className="mt-2 text-emerald-800 text-sm">
+        <p className="mt-2 text-emerald-800 text-sm dark:text-emerald-200">
           Nicole will confirm your time shortly.
+        </p>
+      </div>
+    );
+  }
+
+  if (status === "error") {
+    return (
+      <div className="rounded-3xl bg-red-50 border border-red-200 p-6 text-center shadow-soft dark:bg-red-950 dark:border-red-800">
+        <h3 className="text-xl font-extrabold text-red-900 font-poppins dark:text-red-100">
+          Something went wrong
+        </h3>
+        <p className="mt-2 text-red-800 text-sm dark:text-red-200">
+          Please try again in a moment.
         </p>
       </div>
     );

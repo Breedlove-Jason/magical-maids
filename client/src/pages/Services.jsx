@@ -1,9 +1,19 @@
+import { useEffect, useState } from "react";
 import SectionHeader from "../components/SectionHeader.jsx";
 import ServiceCard from "../components/ServiceCard.jsx";
 import CTA from "../components/CTA.jsx";
-import { services } from "../data.js";
+import { services as fallbackServices } from "../data.js";
+import { fetchServices } from "../api.js";
 
 export default function Services() {
+  const [services, setServices] = useState(fallbackServices);
+
+  useEffect(() => {
+    fetchServices()
+      .then((data) => setServices(data))
+      .catch(() => {});
+  }, []);
+
   return (
     <>
       <section className="section pb-6">

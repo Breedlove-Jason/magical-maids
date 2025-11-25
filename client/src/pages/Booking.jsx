@@ -1,16 +1,27 @@
+import { useEffect, useState } from "react";
 import SectionHeader from "../components/SectionHeader.jsx";
 import BookingForm from "../components/BookingForm.jsx";
+import { fetchServices } from "../api.js";
+import { services as fallbackServices } from "../data.js";
 
 export default function Booking() {
+  const [services, setServices] = useState(fallbackServices);
+
+  useEffect(() => {
+    fetchServices()
+      .then((data) => setServices(data))
+      .catch(() => {});
+  }, []);
+
   return (
     <section className="section">
       <SectionHeader
         eyebrow="Booking"
         title="Book your magical clean"
-        subtitle="Tell us a bit about your home and we’ll confirm your quote."
+        subtitle="Tell us a bit about your home and we'll confirm your quote."
       />
       <div className="grid lg:grid-cols-2 gap-6 items-start">
-        <BookingForm />
+        <BookingForm services={services} />
         <div className="rounded-3xl bg-white border shadow-soft p-6">
           <div className="font-extrabold text-slate-900 font-poppins">
             What happens next?

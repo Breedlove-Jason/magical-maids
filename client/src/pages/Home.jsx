@@ -5,9 +5,21 @@ import FAQ from "../components/FAQ.jsx";
 import CTA from "../components/CTA.jsx";
 import SectionHeader from "../components/SectionHeader.jsx";
 import TeamCard from "../components/TeamCard.jsx";
-import { services, team } from "../data.js";
+import { services as fallbackServices, team } from "../data.js";
+import { useEffect, useState } from "react";
+import { fetchServices } from "../api.js";
 
 export default function Home() {
+  const [services, setServices] = useState(fallbackServices);
+
+  useEffect(() => {
+    fetchServices()
+      .then((data) => setServices(data))
+      .catch(() => {
+        // if server fails, we quietly keep using fallbackServices
+      });
+  }, []);
+
   const popular = services.filter((s) => s.popular);
   
   return (
