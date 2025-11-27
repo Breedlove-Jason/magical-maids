@@ -8,6 +8,8 @@ import TeamCard from "../components/TeamCard.jsx";
 import { services as fallbackServices, team } from "../data.js";
 import { useEffect, useState } from "react";
 import { fetchServices } from "../api.js";
+import ImageCarousel from "../components/ImageCarousel.jsx";
+
 
 export default function Home() {
   const [services, setServices] = useState(fallbackServices);
@@ -38,7 +40,7 @@ export default function Home() {
           ))}
         </div>
       </section>
-      
+      <ImageCarousel />
       <section className="section pt-0">
         <div className="grid md:grid-cols-3 gap-4">
           <Step n="1" title="Book in minutes" text="Tell us your home size, service, and preferred date." />

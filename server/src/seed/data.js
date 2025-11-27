@@ -37,6 +37,27 @@ export const services = [
       "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?q=80&w=1200",
     popular: true
   },
+  
+  // ✅ Newly added 3rd Most-Booked Clean
+  {
+    name: "Maintenance Magic (Weekly)",
+    shortDescription: "Light, consistent weekly tidy for busy households.",
+    longDescription:
+      "A quick weekly reset that keeps your home feeling fresh between deeper cleans. Ideal for busy families, professionals, or anyone who wants to stay ahead of clutter.",
+    basePrice: 89,
+    durationMins: 90,
+    highlights: [
+      "Quick kitchen + bath refresh",
+      "Floors vacuumed",
+      "High-touch surfaces wiped",
+      "Light dusting",
+      "Trash removal"
+    ],
+    imageUrl:
+      "https://images.unsplash.com/photo-1616486363666-997cb210e63e?q=80&w=1200",
+    popular: true
+  },
+  
   {
     name: "Move-In / Move-Out Magic",
     shortDescription: "Perfect for securing deposits and move-in readiness.",
@@ -119,11 +140,7 @@ export const team = [
     bio:
       "Nicole founded Magical Maids to bring trustworthy, high-quality home care to Auburn. She is known for her meticulous approach and warm client relationships.",
     yearsExperience: 8,
-    specialties: [
-      "Deep cleaning",
-      "Eco-friendly care",
-      "Client satisfaction"
-    ],
+    specialties: ["Deep cleaning", "Eco-friendly care", "Client satisfaction"],
     imageUrl: "https://randomuser.me/api/portraits/women/12.jpg"
   },
   {
@@ -132,11 +149,7 @@ export const team = [
     bio:
       "Alyssa is fantastic with bathrooms and kitchens. She is fast, detail-focused, and a favorite among recurring clients.",
     yearsExperience: 5,
-    specialties: [
-      "Sanitization",
-      "Bathroom detailing",
-      "Short-stay resets"
-    ],
+    specialties: ["Sanitization", "Bathroom detailing", "Short-stay resets"],
     imageUrl: "https://randomuser.me/api/portraits/women/65.jpg"
   },
   {
@@ -145,11 +158,7 @@ export const team = [
     bio:
       "Marcus excels at move-out projects, floor care, and heavy-duty cleaning tasks. He has a calm, positive attitude and delivers consistent results.",
     yearsExperience: 4,
-    specialties: [
-      "Move-out cleans",
-      "Floor care",
-      "Trim + baseboards"
-    ],
+    specialties: ["Move-out cleans", "Floor care", "Trim + baseboards"],
     imageUrl: "https://randomuser.me/api/portraits/men/37.jpg"
   }
 ];
